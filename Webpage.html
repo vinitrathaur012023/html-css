@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        /* Style for the search form and table */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #search-form {
+            margin-bottom: 20px;
+        }
+        #search-input {
+            padding: 10px;
+            width: 300px;
+        }
+        #search-button {
+            padding: 10px;
+            cursor: pointer;
+        }
+        #search-results-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #search-results-table th,
+        #search-results-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<h1>Search Results</h1>
+<form id="search-form">
+    <input type="text" id="search-input" placeholder="Enter search query...">
+    <button type="button" id="search-button">Search</button>
+</form>
+<table id="search-results-table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Publication Date</th>
+    </tr>
+    </thead>
+    <tbody id="search-results-body">
+    <!-- Search results will be populated here -->
+    </tbody>
+</table>
+
+<script>
+    // JavaScript code to handle the search functionality
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+    const searchResultsBody = document.getElementById('search-results-body');
+
+    searchButton.addEventListener('click', () => {
+        // Clear previous search results
+        searchResultsBody.innerHTML = '';
+
+        // Fetch search results from the server (replace with your own API endpoint)
+        const searchTerm = searchInput.value;
+        // Replace the URL below with your own API endpoint that returns search results as an array of objects
+        fetch(`https://example.com/api/search?query=${searchTerm}`)
+            .then(response => response.json())
+            .then(results => {
+                // Loop through search results and create table rows
+                results.forEach(result => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+              <td>${result.title}</td>
+              <td>${result.description}</td>
+              <td>${result.author}</td>
+              <td>${result.publicationDate}</td>
+            `;
+                    searchResultsBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error(error));
+    });
+</script>
+</body>
+</html>
