@@ -1,0 +1,43 @@
+/* Reset default margin and padding for body */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set height of viewport for full page layout */
+html, body {
+    height: 100%;
+}
+
+/* Set styles for header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Set styles for content */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Set styles for footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
